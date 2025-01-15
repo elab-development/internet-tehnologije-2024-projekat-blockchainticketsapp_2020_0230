@@ -15,5 +15,15 @@ class Event extends Model
         'vreme',
         'cena',
         'opis',
+        'category_id',
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function event(){
+        return $this->hasMany(Ticket::class);
+    }
+
 }

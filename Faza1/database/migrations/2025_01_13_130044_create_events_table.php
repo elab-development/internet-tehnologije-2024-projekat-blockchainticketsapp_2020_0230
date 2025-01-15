@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id'); // Spoljni kljuc ka tabeli kategorija
+            $table->string('slug')->unique();
             $table->string('naziv');
             $table->date('datum'); // Za unos datuma
             $table->time('vreme'); // Za unos vremena

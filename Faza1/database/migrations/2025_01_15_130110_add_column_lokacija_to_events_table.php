@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('ticket_id'); // Jedinstveni ID karte
-            $table->string('status'); // Status karte ("active" ili "canceled")
+        Schema::table('events', function (Blueprint $table) {
             $table->string('lokacija');
-            $table->timestamps();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::table('events', function (Blueprint $table) {
+            $table->dropColumn('lokacija');
+        });
     }
 };
